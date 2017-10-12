@@ -14,7 +14,6 @@ function test(val){
 
 function saveData(usuario){
     lista.push(usuario);
-    //alert(`Usuario: ${usuario.nombre} ha sido almacenado!`);
 }
 
 function deleteData(){
@@ -70,52 +69,4 @@ function getData(id, nombre, bool){
     }\n`
     users.innerHTML = users.innerHTML + text;
     saveData(usuario);
-}
-
-function showData(id, nombre, bool){
-    var idGet = document.getElementById(id);
-    var nombreGet = document.getElementById(nombre);
-    var boolGet = document.getElementById(bool);
-    var usuario = {
-        nombre: nombreGet.value,
-        id: idGet.value,
-        bool: boolGet.value
-    }
-    alert(`El resultado del JSon son: 
-    usuario = {
-        nombre: "${usuario.nombre}",
-        id: ${usuario.id},
-        bool: ${usuario.bool}
-    }`);
-    saveData(`usuario = {
-       nombre: "${usuario.nombre}",
-       id: ${usuario.id},
-       bool: ${usuario.bool}
-    }`);
-}
-
-function showObject(){
-    var objeto = {
-        nombre: "jmansilla",
-        id: 1235123132,
-        carrera: "ingenieria",
-        edad: 5,
-        tornillos: [
-            {
-                superior: {
-                    tipo: "cruz",
-                    longitud: 3 
-                },
-                cantidad: 2
-            },{
-                inferior: {
-                    tipo: "cruz",
-                    longitud: 3 
-                },
-                cantidad: 6
-            }    
-        ]
-    };
-    console.log(objeto);
-    alert(`El objeto ${objeto.nombre} de edad ${objeto.edad}`);
 }
