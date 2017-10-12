@@ -14,19 +14,34 @@ function test(val){
 
 function saveData(usuario){
     lista.push(usuario);
-    alert(`Usuario: ${usuario.nombre} ha sido almacenado!`);
+    //alert(`Usuario: ${usuario.nombre} ha sido almacenado!`);
 }
 
 function deleteData(){
     var users = document.getElementById('users');
-    users.innerText = "";
-    
+    users.innerHTML = "";
 }
 
-function printData(){
+function printDataXML(){
     deleteData();
     var count = 0;
     var users = document.getElementById('users');
+    users.innerHTML = "";
+    lista.forEach(function(element) {
+        var text = `&ltuser&gt
+        &ltnombre&gt ${element.nombre} &lt/nombre&gt
+        &ltid&gt ${element.id}&lt/id&gt
+        &ltbool&gt ${element.bool}&lt/bool&gt
+        &lt/user&gt`
+        users.innerHTML = users.innerHTML + text;
+    }, this); 
+}
+
+function printDataJSon(){
+    deleteData();
+    var count = 0;
+    var users = document.getElementById('users');
+    users.innerHTML = "";
     var el = document.createElement("button");
     lista.forEach(function(element) {
         var text = `usuario = {
@@ -34,9 +49,8 @@ function printData(){
         id: ${element.id},
         bool: ${element.bool}
     }\n`
-        users.insertAdjacentText('afterend',text);
-    }, this);
-    
+        users.innerHTML = users.innerHTML + text;
+    }, this); 
 }
 
 function getData(id, nombre, bool){
@@ -48,6 +62,13 @@ function getData(id, nombre, bool){
         id: idGet.value,
         bool: boolGet.value
     }
+    var users = document.getElementById('users');
+    var text = `usuario = {
+        nombre: "${usuario.nombre}",
+        id: ${usuario.id},
+        bool: ${usuario.bool}
+    }\n`
+    users.innerHTML = users.innerHTML + text + "\n";
     saveData(usuario);
 }
 
