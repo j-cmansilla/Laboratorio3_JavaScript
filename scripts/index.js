@@ -32,7 +32,7 @@ function printDataXML(){
         &ltnombre&gt ${element.nombre} &lt/nombre&gt
         &ltid&gt ${element.id}&lt/id&gt
         &ltbool&gt ${element.bool}&lt/bool&gt
-        &lt/user&gt`
+        &lt/user&gt `
         users.innerHTML = users.innerHTML + text;
     }, this); 
 }
@@ -44,11 +44,11 @@ function printDataJSon(){
     users.innerHTML = "";
     var el = document.createElement("button");
     lista.forEach(function(element) {
-        var text = `usuario = {
+        var text = `usuario = { 
         nombre: "${element.nombre}",
         id: ${element.id},
         bool: ${element.bool}
-    }\n`
+    } `
         users.innerHTML = users.innerHTML + text;
     }, this); 
 }
@@ -68,7 +68,7 @@ function getData(id, nombre, bool){
         id: ${usuario.id},
         bool: ${usuario.bool}
     }\n`
-    users.innerHTML = users.innerHTML + text + "\n";
+    users.innerHTML = users.innerHTML + text;
     saveData(usuario);
 }
 
